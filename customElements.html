@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>customElements.define</title>
+</head>
+<body>
+    <baidu-know></baidu-know>
+    <script>
+        class BaiduKnow extends HTMLElement{
+            constructor() {
+                super();
+                // 表示代码是封闭的，不允许外部访问
+                let shadow = this.attachShadow({mode: 'closed'});
+
+                let image = document.createElement('img');
+                image.src = 'https://iknowpc.bdimg.com/static/common/widget/search-box-new/img/logo-new.aff256e.png';
+                image.classList.add('image');
+                image.setAttribute('alt','百度知道');
+
+                let container = document.createElement('div');
+                container.classList.add('container');
+
+                let name = document.createElement('h3');
+                name.classList.add('name');
+                name.innerText = "百度知道";
+
+                let description = document.createElement('p');
+                description.classList.add('des-test');
+                description.innerText = "不知道就问百度知道";
+
+                container.append(name,description);
+
+                shadow.append(image,container);
+            }
+        }
+
+        window.customElements.define('baidu-know',BaiduKnow);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>template</title>
+</head>
+<body>
+    <baidu-know></baidu-know>
+
+    <template id="know-container">
+        <img class="image" src="https://iknowpc.bdimg.com/static/common/widget/search-box-new/img/logo-new.aff256e.png" alt="百度知道">
+        <div class="container">
+            <h3 class="name">百度知道</h3>
+            <p class="des-test">不知道就问百度知道</p>
+        </div>
+    </template>
+
+    <script>
+        class BaiduKnow extends HTMLElement{
+            constructor() {
+                super();
+
+                let templateElement = document.getElementById('know-container');
+                let content = templateElement.content.cloneNode(true);
+                this.append(content);
+            }
+        }
+        window.customElements.define('baidu-know',BaiduKnow);
+    </script>
+</body>
+</html>

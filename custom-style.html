@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置样式</title>
+</head>
+<body>
+    <baidu-know></baidu-know>
+
+    <template id="know-container">
+        <style>
+            :root{
+                --fs: 12px;
+                --tclr: #666;
+                --bg: #f0f0f0;
+            }
+
+            .content{
+                width: 200px;
+                background-color: var(--bg);
+                padding: 7px 10px;
+                border: #aaa 1px solid;
+                margin: 20px auto;
+            }
+
+            .image{
+                width: 100px;
+            }
+
+            h3{
+                font-size: 14px;
+                color: var(--tclr);
+            }
+            p{
+                font-size: var(--fs);
+                color: var(--tclr);
+            }
+        </style>
+        <div class="content">
+            <img class="image" src="https://iknowpc.bdimg.com/static/common/widget/search-box-new/img/logo-new.aff256e.png" alt="百度知道">
+            <div class="container">
+                <h3 class="name">百度知道</h3>
+                <p class="des-test">不知道就问百度知道</p>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        class BaiduKnow extends HTMLElement{
+            constructor() {
+                super();
+
+                let templateElement = document.getElementById('know-container');
+                let content = templateElement.content.cloneNode(true);
+                this.append(content);
+            }
+        }
+        window.customElements.define('baidu-know',BaiduKnow);
+    </script>
+</body>
+</html>
